@@ -9,7 +9,7 @@ import com.highcapable.kavaref.KavaRef.Companion.asResolver
 import com.highcapable.kavaref.KavaRef.Companion.resolve
 import me.hd.wauxv.data.config.DefaultData
 import me.hd.wauxv.databinding.ModuleDialogAutoLoginWinBinding
-import me.hd.wauxv.factory.showDialog
+import me.hd.wauxv.ui.setting.factory.showConfigDialog
 import me.hd.wauxv.hook.anno.HookAnno
 import me.hd.wauxv.hook.anno.ViewAnno
 import me.hd.wauxv.hook.base.SwitchHook
@@ -34,7 +34,7 @@ object AutoLoginWinHook : SwitchHook("AutoLoginWinHook") {
         binding.moduleDialogCbAutoLoginWinAutoSyncMsg.isChecked = ValAutoSyncMsg.booleanVal
         binding.moduleDialogCbAutoLoginWinShowLoginDevice.isChecked = ValShowLoginDevice.booleanVal
         binding.moduleDialogCbAutoLoginWinAutoLoginDevice.isChecked = ValAutoLoginDevice.booleanVal
-        layoutView.context.showDialog {
+        layoutView.context.showConfigDialog {
             title = funcName
             view = binding.root
             positiveButton("保存") {

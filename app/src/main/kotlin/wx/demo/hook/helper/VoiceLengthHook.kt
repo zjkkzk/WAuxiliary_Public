@@ -6,7 +6,7 @@ import com.highcapable.kavaref.KavaRef.Companion.asResolver
 import me.hd.wauxv.data.config.DefaultData
 import me.hd.wauxv.data.config.DexDescData
 import me.hd.wauxv.databinding.ModuleDialogVoiceLengthBinding
-import me.hd.wauxv.factory.showDialog
+import me.hd.wauxv.ui.setting.factory.showConfigDialog
 import me.hd.wauxv.hook.anno.HookAnno
 import me.hd.wauxv.hook.anno.ViewAnno
 import me.hd.wauxv.hook.base.SwitchHook
@@ -27,7 +27,7 @@ object VoiceLengthHook : SwitchHook("VoiceLengthHook"), IDexFind {
     override var onClick: ((View) -> Unit)? = { layoutView ->
         val binding = ModuleDialogVoiceLengthBinding.inflate(LayoutInflater.from(layoutView.context))
         binding.moduleDialogSliderVoiceLength.value = ValVoiceLength.intVal.toFloat()
-        layoutView.context.showDialog {
+        layoutView.context.showConfigDialog {
             title = funcName
             view = binding.root
             positiveButton("保存") {

@@ -19,14 +19,15 @@ import me.hd.wauxv.data.config.DefaultData
 import me.hd.wauxv.data.config.DexDescData
 import me.hd.wauxv.data.factory.WxProcess
 import me.hd.wauxv.databinding.ModuleDialogLocationBinding
-import me.hd.wauxv.factory.showDialog
 import me.hd.wauxv.hook.anno.HookAnno
 import me.hd.wauxv.hook.anno.ViewAnno
 import me.hd.wauxv.hook.base.SwitchHook
 import me.hd.wauxv.hook.core.dex.IDexFind
 import me.hd.wauxv.hook.factory.findDexClassMethod
+import me.hd.wauxv.hook.factory.helper.utils.ActivityHelper
 import me.hd.wauxv.hook.factory.toDexMethod
 import me.hd.wauxv.hook.factory.toLazyAppClass
+import me.hd.wauxv.ui.setting.factory.showConfigDialog
 import org.luckypray.dexkit.DexKitBridge
 
 @HookAnno
@@ -50,12 +51,12 @@ object LocationHook : SwitchHook("LocationHook"), IDexFind {
     override var onClick: ((View) -> Unit)? = { layoutView ->
         binding = ModuleDialogLocationBinding.inflate(LayoutInflater.from(layoutView.context))
         binding.moduleDialogBtnLocationSelect.setOnClickListener {
-            val activity = layoutView.context as Activity
+            val activity = ActivityHelper.getTopActivity()!!
             activity.startActivityForResult(Intent(layoutView.context, RedirectUIClass).apply { putExtra("map_view_type", 8) }, 6)
         }
         binding.moduleDialogEdtLocationLatitude.setText("${ValLatitude.floatVal}")
         binding.moduleDialogEdtLocationLongitude.setText("${ValLongitude.floatVal}")
-        layoutView.context.showDialog {
+        layoutView.context.showConfigDialog {
             title = funcName
             view = binding.root
             positiveButton("保存") {

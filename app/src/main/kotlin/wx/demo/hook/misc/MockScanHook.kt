@@ -28,12 +28,13 @@ object MockScanHook : SwitchHook("MockScanHook"), IDexFind {
         MethodQBarString.toDexMethod {
             hook {
                 beforeIfEnabled {
-                    val source = args(2).int()
-                    val a8KeyScene = args(3).int()
+                    val (sourceIndex, a8KeySceneIndex) = if (method.parameterCount == 16) 3 to 4 else 2 to 3
+                    val source = args(sourceIndex).int()
+                    val a8KeyScene = args(a8KeySceneIndex).int()
                     val matchedScene = ScanScene.entries.find { it.source == source && it.a8KeyScene == a8KeyScene }
                     if (matchedScene == ScanScene.ALBUM_SCAN || matchedScene == ScanScene.LONG_PRESS_SCAN) {
-                        args(2).set(ScanScene.WECHAT_SCAN.source)
-                        args(3).set(ScanScene.WECHAT_SCAN.a8KeyScene)
+                        args(sourceIndex).set(ScanScene.WECHAT_SCAN.source)
+                        args(a8KeySceneIndex).set(ScanScene.WECHAT_SCAN.a8KeyScene)
                     }
                 }
             }

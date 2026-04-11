@@ -57,7 +57,7 @@ object AutoViewOriginalPhotoHook : SwitchHook("AutoViewOriginalPhotoHook"), IDex
             onMethod {
                 matcher {
                     declaredClass = "com.tencent.mm.ui.chatting.gallery.ImageGalleryUI"
-                    if (isAtLeast(WxVersion.V8_0_54) || isAtLeastPlay(WxPlayVersion.V8_0_54_PLAY)) {
+                    if (isAtLeast(WxVersion.V8_0_54) || isAtLeastPlay(WxPlayVersion.V8_0_54_PLAY_2740)) {
                         usingEqStrings("setHdImageActionDownloadable")
                     } else {
                         usingEqStrings("setImageHdImgBtnVisibility")

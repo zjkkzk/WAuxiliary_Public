@@ -9,7 +9,7 @@ import android.view.View
 import me.hd.wauxv.data.config.DefaultData
 import me.hd.wauxv.data.config.DexDescData
 import me.hd.wauxv.databinding.ModuleDialogMsgFormatBinding
-import me.hd.wauxv.factory.showDialog
+import me.hd.wauxv.ui.setting.factory.showConfigDialog
 import me.hd.wauxv.factory.toDateStr
 import me.hd.wauxv.hook.anno.HookAnno
 import me.hd.wauxv.hook.anno.ViewAnno
@@ -58,7 +58,7 @@ object MsgFormatHook : SwitchHook("MsgFormatHook"), IDexFind {
                 }
             }
         }
-        layoutView.context.showDialog {
+        layoutView.context.showConfigDialog {
             title = funcName
             view = binding.root
             positiveButton("保存") {
@@ -84,7 +84,11 @@ object MsgFormatHook : SwitchHook("MsgFormatHook"), IDexFind {
         ConstructorSendTextComponent.toDexConstructor {
             hook {
                 beforeIfEnabled {
-                    val textIndex = if (parameterCount == 13) 8 else 7
+                    val textIndex = when (parameterCount) {
+                        14 -> 8
+                        13 -> 8
+                        else -> 7
+                    }
                     val originalText = args(textIndex).string()
                     args(textIndex).set(formatMsg(originalText))
                 }
@@ -102,7 +106,7 @@ object MsgFormatHook : SwitchHook("MsgFormatHook"), IDexFind {
             }
             onMethod {
                 matcher {
-                    paramCount(12..13)
+                    paramCount(12..14)
                 }
             }
         }

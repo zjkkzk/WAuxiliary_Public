@@ -13,7 +13,7 @@ import com.highcapable.yukihookapi.hook.param.HookParam
 import me.hd.wauxv.data.config.DefaultData
 import me.hd.wauxv.data.config.DexDescData
 import me.hd.wauxv.databinding.ModuleDialogEmojiGameBinding
-import me.hd.wauxv.factory.showDialog
+import me.hd.wauxv.ui.setting.factory.showConfigDialog
 import me.hd.wauxv.hook.anno.HookAnno
 import me.hd.wauxv.hook.anno.ViewAnno
 import me.hd.wauxv.hook.base.SwitchHook
@@ -69,7 +69,7 @@ object EmojiGameHook : SwitchHook("EmojiGameHook"), IDexFind {
             DiceFace.FIVE.index -> binding.moduleDialogRbEmojiGameDice5.isChecked = true
             DiceFace.SIX.index -> binding.moduleDialogRbEmojiGameDice6.isChecked = true
         }
-        layoutView.context.showDialog {
+        layoutView.context.showConfigDialog {
             title = funcName
             view = binding.root
             positiveButton("保存") {
