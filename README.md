@@ -73,10 +73,13 @@ WeChat Auxiliary
 | BetterAndroid | [BetterAndroid](https://github.com/BetterAndroid/BetterAndroid) |
 | BetterAndroid | [Hikage](https://github.com/BetterAndroid/Hikage)               |
 | LuckyPray     | [DexKit](https://github.com/LuckyPray/DexKit)                   |
+| BillyWei01    | [FastKv](https://github.com/BillyWei01/FastKV)                  |
+| kongzue       | [DialogX](https://github.com/kongzue/DialogX)                   |
 | cinit         | [QAuxiliary](https://github.com/cinit/QAuxiliary)               |
 | suzhelan      | [TimTool](https://github.com/suzhelan/TimTool)                  |
 | fankes        | [TSBattery](https://github.com/fankes/TSBattery)                |
 | KitsunePie    | [QQCleaner](https://github.com/KitsunePie/QQCleaner)            |
+| LSPosed       | [LSPosed](https://github.com/LSPosed/LSPosed)                   |
 | Icon          | [MaiTungTM](https://github.com/Lagrio)                          |
 
 ## 星图:
